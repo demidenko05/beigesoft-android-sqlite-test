@@ -12,7 +12,7 @@
 
 /**
  * <p>
- * Tests of database service on Android.
+ * Tests for Android.
  * </p>
  *
  * @author Yury Demidenko

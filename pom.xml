@@ -9,7 +9,7 @@
   <packaging>apk</packaging>
 
   <name>Beigesoft ™ Android Library tests</name>
-  <description>BeigeORM for Android tests. Not for central deploying! It requires attached Android device.</description>
+  <description>Several Android tests - sqlite, crypto etc. Not for central deploying! It requires attached Android device.</description>
   <url>http://www.beigesoft.org</url>
   <inceptionYear>2016</inceptionYear>
 
@@ -24,10 +24,10 @@
       <build>
         <testResources>
           <testResource>
-            <directory>../beigesoft-orm/src/main/resources</directory>
+            <directory>${user.home}/git/beigesoft-orm/src/main/resources</directory>
           </testResource>
           <testResource>
-            <directory>../beigesoft-orm/src/test/resources</directory>
+            <directory>${user.home}/git/beigesoft-orm/src/test/resources</directory>
           </testResource>
         </testResources>
         <plugins>
@@ -57,23 +57,105 @@
     <dependency>
       <groupId>org.beigesoft</groupId>
       <artifactId>beigesoft-android-sqlite</artifactId>
-      <version>1.1.4-SNAPSHOT</version>
+      <version>1.1.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.demidenko05</groupId>
+      <artifactId>a-jetty-base</artifactId>
+      <version>1.0.3-SNAPSHOT</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcprov-jdk15on</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcpkix-jdk15on</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.github.demidenko05</groupId>
+          <artifactId>a-apache-jsp</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.github.demidenko05</groupId>
+          <artifactId>taglibs-standard-spec</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.github.demidenko05</groupId>
+          <artifactId>taglibs-standard-impl</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.github.demidenko05</groupId>
+          <artifactId>a-javabeans8</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>javax.servlet</groupId>
+          <artifactId>javax.servlet-api</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.github.demidenko05</groupId>
+      <artifactId>a-jetty-base</artifactId>
+      <version>1.0.3-SNAPSHOT</version>
+      <type>test-jar</type>
+      <exclusions>
+        <exclusion>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcprov-jdk15on</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcpkix-jdk15on</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.github.demidenko05</groupId>
+          <artifactId>a-apache-jsp</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.github.demidenko05</groupId>
+          <artifactId>taglibs-standard-spec</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.github.demidenko05</groupId>
+          <artifactId>taglibs-standard-impl</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.github.demidenko05</groupId>
+          <artifactId>a-javabeans8</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>javax.servlet</groupId>
+          <artifactId>javax.servlet-api</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.madgag.spongycastle</groupId>
+      <artifactId>bcpkix-jdk15on</artifactId>
+      <version>1.58.0.0</version>
+      <exclusions>
+        <exclusion>
+          <groupId>junitjunit</groupId>
+          <artifactId>junit</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.beigesoft</groupId>
       <artifactId>beigesoft-orm</artifactId>
-      <version>1.1.4-SNAPSHOT</version>
+      <version>1.1.4</version>
       <type>test-jar</type>
     </dependency>
     <dependency>
       <groupId>org.beigesoft</groupId>
       <artifactId>beigesoft-orm</artifactId>
-      <version>1.1.4-SNAPSHOT</version>
+      <version>1.1.4</version>
     </dependency>
     <dependency>
       <groupId>org.beigesoft</groupId>
       <artifactId>beigesoft-bcommon</artifactId>
-      <version>1.1.4-SNAPSHOT</version>
+      <version>1.1.4</version>
       <type>test-jar</type>
     </dependency>
     <dependency>
@@ -110,10 +192,10 @@
     <finalName>${project.artifactId}</finalName>
     <testResources>
       <testResource>
-        <directory>../beigesoft-orm/src/main/resources</directory>
+        <directory>${user.home}/git/beigesoft-orm/src/main/resources</directory>
       </testResource>
       <testResource>
-        <directory>../beigesoft-orm/src/test/resources</directory>
+        <directory>${user.home}/git/beigesoft-orm/src/test/resources</directory>
       </testResource>
     </testResources>
     <plugins>

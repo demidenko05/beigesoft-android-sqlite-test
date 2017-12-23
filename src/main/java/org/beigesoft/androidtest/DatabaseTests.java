@@ -75,7 +75,7 @@ public class DatabaseTests extends android.test.AndroidTestCase {
       //BeanELResolver beanELResolver = new BeanELResolver();
       Context context = getContext();
       Logger log = new Logger();
-      log.setIsShowDebugMessages(true);
+      log.setIsShowDebugMessages(false);
       SQLiteDatabase db = context.openOrCreateDatabase ("dbtest.sqlite",
        Context.MODE_PRIVATE, new CursorFactory());
       srvDatabase = new SrvDatabase();
