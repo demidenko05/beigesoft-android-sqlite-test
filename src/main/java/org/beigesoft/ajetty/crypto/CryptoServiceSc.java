@@ -263,7 +263,7 @@ public class CryptoServiceSc implements ICryptoService {
       int len;
       while ((len = bis.read(buffer)) >= 0) {
         sha1.update(buffer, 0, buffer.length);
-      };
+      }
     } finally {
       if (bis != null) {
         try {

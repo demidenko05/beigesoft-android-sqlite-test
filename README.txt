@@ -3,7 +3,7 @@ or https://sites.google.com/site/beigesoftware
 
 Beigesoft ™ Android Library tests.
 
-BeigeORM for Android tests. Not for central deploying! It requires attached Android device.
+It's several Android tests - sqlite, crypto etc. Not for central deploying! It requires attached Android device.
 
 licenses:
 GNU General Public License version 2
