@@ -9,8 +9,8 @@
   <packaging>apk</packaging>
 
   <name>Beigesoft ™ Android Library tests</name>
-  <description>Several Android tests - sqlite, crypto etc. Not for central deploying! It requires attached Android device.</description>
-  <url>http://www.beigesoft.org</url>
+  <description>Several Android tests - sqlite, crypto, PdfWriter etc. Not for central deploying! It requires attached Android device.</description>
+  <url>https://sites.google.com/site/beigesoftware</url>
   <inceptionYear>2016</inceptionYear>
 
   <properties>
@@ -24,10 +24,10 @@
       <build>
         <testResources>
           <testResource>
-            <directory>${user.home}/git/beigesoft-orm/src/main/resources</directory>
+            <directory>${user.home}${file.separator}git${file.separator}beigesoft-orm${file.separator}src${file.separator}main${file.separator}resources</directory>
           </testResource>
           <testResource>
-            <directory>${user.home}/git/beigesoft-orm/src/test/resources</directory>
+            <directory>${user.home}${file.separator}git${file.separator}beigesoft-orm${file.separator}src${file.separator}test${file.separator}resources</directory>
           </testResource>
         </testResources>
         <plugins>
@@ -57,7 +57,7 @@
     <dependency>
       <groupId>org.beigesoft</groupId>
       <artifactId>beigesoft-android-sqlite</artifactId>
-      <version>1.1.4</version>
+      <version>1.1.5-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.github.demidenko05</groupId>
@@ -144,18 +144,18 @@
     <dependency>
       <groupId>org.beigesoft</groupId>
       <artifactId>beigesoft-orm</artifactId>
-      <version>1.1.4</version>
+      <version>1.1.5-SNAPSHOT</version>
       <type>test-jar</type>
     </dependency>
     <dependency>
       <groupId>org.beigesoft</groupId>
       <artifactId>beigesoft-orm</artifactId>
-      <version>1.1.4</version>
+      <version>1.1.5-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.beigesoft</groupId>
       <artifactId>beigesoft-bcommon</artifactId>
-      <version>1.1.4</version>
+      <version>1.1.5-SNAPSHOT</version>
       <type>test-jar</type>
     </dependency>
     <dependency>
@@ -177,9 +177,19 @@
       </exclusions>
     </dependency>
     <dependency>
+     <groupId>org.beigesoft</groupId>
+     <artifactId>beige-pdfwriter</artifactId>
+     <version>1.0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+     <groupId>org.beigesoft</groupId>
+     <artifactId>beige-graphic-android</artifactId>
+     <version>1.0.0</version>
+    </dependency>
+    <dependency>
       <groupId>org.beigesoft</groupId>
       <artifactId>beige-logging-android</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -192,10 +202,10 @@
     <finalName>${project.artifactId}</finalName>
     <testResources>
       <testResource>
-        <directory>${user.home}/git/beigesoft-orm/src/main/resources</directory>
+        <directory>${user.home}${file.separator}git${file.separator}beigesoft-orm${file.separator}src${file.separator}main${file.separator}resources</directory>
       </testResource>
       <testResource>
-        <directory>${user.home}/git/beigesoft-orm/src/test/resources</directory>
+        <directory>${user.home}${file.separator}git${file.separator}beigesoft-orm${file.separator}src${file.separator}test${file.separator}resources</directory>
       </testResource>
     </testResources>
     <plugins>

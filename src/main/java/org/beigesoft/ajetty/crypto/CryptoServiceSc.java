@@ -25,6 +25,7 @@ import java.security.cert.X509Certificate;
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -94,36 +95,65 @@ public class CryptoServiceSc implements ICryptoService {
   /**
    * <p>Check if password strong.
    * It implements logic:
-   * Password must be at least 15 letters and digits!
-   * 80% of them must be different!
-   * 3-5 of them must be digits!</p>
+   * At least 15 letters and digits!
+   * 60% of them must be different!
+   * At least 50% of them must be letters!
+   * At least 3 of them must be digits!
+   * No containing qwerty, 12345, admin, user etc!</p>
    * @param pPassword Password
    * @return NULL if strong, otherwise message.
    **/
   @Override
   public final String isPasswordStrong(final char[] pPassword) {
-    String wrong = getMsg("WrongPassword");
     if (pPassword == null || pPassword.length < 15) {
-      return wrong;
+      return getMsg("Password15");
+    }
+    String passw = new String(pPassword).toLowerCase();
+    if (passw.contains("qwert") || passw.contains("qwaszx")
+      || passw.contains("qweasd") || passw.contains("qazwsx")
+        || passw.contains("wsxedc") || passw.contains("wqsaxz")
+          || passw.contains("ewqdsa") || passw.contains("zaqxsw")
+            || passw.contains("xswzaq") || passw.contains("qscwdv")
+              || passw.contains("csqvdw") || passw.contains("zaxqsc")
+                || passw.contains("qscax") || passw.contains("csqxa")
+                  || passw.contains("trewq") || passw.contains("asdfg")
+                || passw.contains("zxcvb") || passw.contains("bvcxz")
+              || passw.contains("gfdsa")) {
+      return getMsg("noQwerty");
+    } else if (passw.contains("raccooneatstone")
+      || passw.contains("nraccooteaeston")) {
+      return getMsg("noDemoPassw");
+    } else if (passw.contains("2345") || passw.contains("admin")
+      || passw.contains("user") || passw.contains("5432")
+        || passw.contains("5678") || passw.contains("9876")
+          || passw.contains("password")) {
+      return getMsg("noAdmin12345");
     }
     HashSet<Character> chars = new HashSet<Character>();
-    HashSet<Character> digits = new HashSet<Character>();
+    ArrayList<Character> digits = new ArrayList<Character>();
+    ArrayList<Character> letters = new ArrayList<Character>();
     for (char ch : pPassword) {
       if (!Character.isLetterOrDigit(ch)) {
-        return wrong;
+        return getMsg("letterOrDig");
       }
       if (Character.isDigit(ch)) {
         digits.add(ch);
+      } else {
+        letters.add(ch);
       }
       chars.add(ch);
     }
     double allLn = pPassword.length;
+    double lettersLn = letters.size();
     double distinctLn = chars.size();
-    if (distinctLn / allLn < 0.79999999999) {
-      return wrong;
+    if (lettersLn / allLn < 0.49999999999) {
+      return getMsg("lettersAtLeast50pr");
     }
-    if (digits.size() < 3 || digits.size() > 5) {
-      return wrong;
+    if (distinctLn / allLn < 0.59999999999) {
+      return getMsg("distinct60pr");
+    }
+    if (digits.size() < 3) {
+      return getMsg("atLeast3digits");
     }
     return null;
   }
@@ -192,8 +222,8 @@ public class CryptoServiceSc implements ICryptoService {
     X509Certificate fileExchCert = buildEndEntityCert(kpFileExch.getPublic(),
       kpCa.getPrivate(), caCert, 3, x500dn, start, end);
     // save to keystore:
-    JcePKCSPBEOutputEncryptorBuilder jcePcEb = new JcePKCSPBEOutputEncryptorBuilder(
-      NISTObjectIdentifiers.id_aes256_CBC);
+    JcePKCSPBEOutputEncryptorBuilder jcePcEb =
+      new JcePKCSPBEOutputEncryptorBuilder(NISTObjectIdentifiers.id_aes256_CBC);
     jcePcEb.setProvider("SC");
     OutputEncryptor encOut = jcePcEb.build(pPassw);
     PKCS12SafeBagBuilder caCrtBagBld = new JcaPKCS12SafeBagBuilder(caCert);
@@ -260,8 +290,7 @@ public class CryptoServiceSc implements ICryptoService {
     try {
       bis = new BufferedInputStream(new FileInputStream(pFile));
       byte[] buffer = new byte[1024];
-      int len;
-      while ((len = bis.read(buffer)) >= 0) {
+      while (bis.read(buffer) >= 0) {
         sha1.update(buffer, 0, buffer.length);
       }
     } finally {
@@ -284,7 +313,9 @@ public class CryptoServiceSc implements ICryptoService {
    */
   @Override
   public final void init() throws Exception {
-    Security.addProvider(new BouncyCastleProvider());
+    if (Security.getProvider(getProviderName()) == null) {
+      Security.addProvider(new BouncyCastleProvider());
+    }
   }
 
   /**
@@ -353,7 +384,7 @@ public class CryptoServiceSc implements ICryptoService {
       .createAuthorityKeyIdentifier(pRootCert)).addExtension(Extension
       .subjectKeyIdentifier, false, extUtils.createSubjectKeyIdentifier(pCaPk))
       .addExtension(Extension.basicConstraints, true,
-        new BasicConstraints(Integer.MAX_VALUE))
+        new BasicConstraints(0))
       .addExtension(Extension.keyUsage, true, new KeyUsage(KeyUsage
       .digitalSignature | KeyUsage.keyCertSign | KeyUsage.cRLSign));
     ContentSigner signer = new JcaContentSignerBuilder("SHA256withRSA")
@@ -382,9 +413,9 @@ public class CryptoServiceSc implements ICryptoService {
       .subjectKeyIdentifier, false, extUtils
       .createSubjectKeyIdentifier(pKpCa.getPublic()))
       .addExtension(Extension.basicConstraints, true,
-        new BasicConstraints(Integer.MAX_VALUE))
-      .addExtension(Extension.keyUsage, true, new KeyUsage(KeyUsage
-      .digitalSignature | KeyUsage.keyCertSign | KeyUsage.cRLSign));
+        new BasicConstraints(0))
+      .addExtension(Extension.keyUsage, true,
+        new KeyUsage(KeyUsage.keyCertSign | KeyUsage.cRLSign));
     ContentSigner signer = new JcaContentSignerBuilder("SHA256withRSA")
       .setProvider("SC").build(pKpCa.getPrivate());
     return new JcaX509CertificateConverter().setProvider("SC")
