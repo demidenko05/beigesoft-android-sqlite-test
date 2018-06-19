@@ -57,12 +57,12 @@
     <dependency>
       <groupId>org.beigesoft</groupId>
       <artifactId>beigesoft-android-sqlite</artifactId>
-      <version>1.1.6-SNAPSHOT</version>
+      <version>1.1.6</version>
     </dependency>
     <dependency>
       <groupId>com.github.demidenko05</groupId>
       <artifactId>a-jetty-base</artifactId>
-      <version>1.0.4-SNAPSHOT</version>
+      <version>1.0.4</version>
       <exclusions>
         <exclusion>
           <groupId>org.bouncycastle</groupId>
@@ -97,7 +97,7 @@
     <dependency>
       <groupId>com.github.demidenko05</groupId>
       <artifactId>a-jetty-base</artifactId>
-      <version>1.0.4-SNAPSHOT</version>
+      <version>1.0.4</version>
       <type>test-jar</type>
       <exclusions>
         <exclusion>
@@ -144,18 +144,18 @@
     <dependency>
       <groupId>org.beigesoft</groupId>
       <artifactId>beigesoft-orm</artifactId>
-      <version>1.1.6-SNAPSHOT</version>
+      <version>1.1.6</version>
       <type>test-jar</type>
     </dependency>
     <dependency>
       <groupId>org.beigesoft</groupId>
       <artifactId>beigesoft-orm</artifactId>
-      <version>1.1.6-SNAPSHOT</version>
+      <version>1.1.6</version>
     </dependency>
     <dependency>
       <groupId>org.beigesoft</groupId>
       <artifactId>beigesoft-bcommon</artifactId>
-      <version>1.1.6-SNAPSHOT</version>
+      <version>1.1.6</version>
       <type>test-jar</type>
     </dependency>
     <dependency>
@@ -179,7 +179,7 @@
     <dependency>
      <groupId>org.beigesoft</groupId>
      <artifactId>beige-pdfwriter</artifactId>
-     <version>1.0.2-SNAPSHOT</version>
+     <version>1.0.2</version>
     </dependency>
     <dependency>
      <groupId>org.beigesoft</groupId>
@@ -189,7 +189,7 @@
     <dependency>
       <groupId>org.beigesoft</groupId>
       <artifactId>beige-logging-android</artifactId>
-      <version>1.0.2-SNAPSHOT</version>
+      <version>1.0.2</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
