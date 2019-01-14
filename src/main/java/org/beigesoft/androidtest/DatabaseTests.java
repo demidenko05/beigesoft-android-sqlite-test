@@ -40,6 +40,7 @@ import org.beigesoft.persistable.UserTomcat;
 import org.beigesoft.persistable.UserRoleTomcat;
 import org.beigesoft.persistable.IdUserRoleTomcat;
 import org.beigesoft.test.persistable.UserRoleTomcatPriority;
+import org.beigesoft.test.persistable.GoodVersionTime;
 import org.beigesoft.service.IUtlReflection;
 import org.beigesoft.properties.UtlProperties;
 import org.beigesoft.service.UtlReflection;
@@ -172,6 +173,7 @@ public class DatabaseTests extends android.test.AndroidTestCase {
                 .get(RoleJetty.class).get("itsId")
                   .get("definition"));
     TestSimple<Cursor> testSimple = new TestSimple<Cursor>();
+    testSimple.setNotAndr(false);
     testSimple.setSrvDatabase(srvDatabase);
     testSimple.setLogger(log);
     testSimple.setSrvOrm(srvOrm);
