@@ -56,13 +56,29 @@
   <dependencies>
     <dependency>
       <groupId>org.beigesoft</groupId>
-      <artifactId>beigesoft-android-sqlite</artifactId>
-      <version>1.1.8</version>
+      <artifactId>beige-andr</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+     <groupId>org.beigesoft</groupId>
+     <artifactId>beige-pdfwriter</artifactId>
+     <version>1.0.3-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+     <groupId>org.beigesoft</groupId>
+     <artifactId>beige-graphic-android</artifactId>
+     <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.beigesoft</groupId>
+      <artifactId>beige-blc</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <type>test-jar</type>
     </dependency>
     <dependency>
       <groupId>com.github.demidenko05</groupId>
       <artifactId>a-jetty-base</artifactId>
-      <version>1.0.4</version>
+      <version>1.0.5-SNAPSHOT</version>
       <exclusions>
         <exclusion>
           <groupId>org.bouncycastle</groupId>
@@ -97,7 +113,7 @@
     <dependency>
       <groupId>com.github.demidenko05</groupId>
       <artifactId>a-jetty-base</artifactId>
-      <version>1.0.4</version>
+      <version>1.0.5-SNAPSHOT</version>
       <type>test-jar</type>
       <exclusions>
         <exclusion>
@@ -140,40 +156,6 @@
       <artifactId>bcpkix-jdk15on</artifactId>
       <version>1.61</version>
     </dependency>
-<!--    <dependency>
-      <groupId>com.madgag.spongycastle</groupId>
-      <artifactId>bcpkix-jdk15on</artifactId>
-      <version>1.58.0.0</version>
-      <exclusions>
-        <exclusion>
-          <groupId>junitjunit</groupId>
-          <artifactId>junit</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>-->
-    <dependency>
-      <groupId>org.beigesoft</groupId>
-      <artifactId>beigesoft-orm</artifactId>
-      <version>1.1.8</version>
-      <type>test-jar</type>
-    </dependency>
-    <dependency>
-      <groupId>org.beigesoft</groupId>
-      <artifactId>beigesoft-orm</artifactId>
-      <version>1.1.8</version>
-    </dependency>
-    <dependency>
-      <groupId>org.beigesoft</groupId>
-      <artifactId>beigesoft-bcommon</artifactId>
-      <version>1.1.8</version>
-      <type>test-jar</type>
-    </dependency>
-    <dependency>
-      <groupId>com.google.android</groupId>
-      <artifactId>android</artifactId>
-      <version>4.1.1.4</version>
-      <scope>provided</scope>
-    </dependency>
     <dependency>
       <groupId>com.google.android</groupId>
       <artifactId>android-test</artifactId>
@@ -187,21 +169,6 @@
       </exclusions>
     </dependency>
     <dependency>
-     <groupId>org.beigesoft</groupId>
-     <artifactId>beige-pdfwriter</artifactId>
-     <version>1.0.2</version>
-    </dependency>
-    <dependency>
-     <groupId>org.beigesoft</groupId>
-     <artifactId>beige-graphic-android</artifactId>
-     <version>1.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.beigesoft</groupId>
-      <artifactId>beige-logging-android</artifactId>
-      <version>1.0.2</version>
-    </dependency>
-    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
@@ -210,14 +177,17 @@
 
   <build>
     <finalName>${project.artifactId}</finalName>
-    <testResources>
-      <testResource>
-        <directory>${user.home}${file.separator}git${file.separator}beigesoft-orm${file.separator}src${file.separator}main${file.separator}resources</directory>
-      </testResource>
-      <testResource>
-        <directory>${user.home}${file.separator}git${file.separator}beigesoft-orm${file.separator}src${file.separator}test${file.separator}resources</directory>
-      </testResource>
-    </testResources>
+    <resources>
+      <resource>
+        <directory>src${file.separator}main${file.separator}resources</directory>
+      </resource>
+      <resource>
+        <directory>${user.home}${file.separator}git${file.separator}beige-blc${file.separator}src${file.separator}test${file.separator}resources</directory>
+      </resource>
+      <resource>
+        <directory>${user.home}${file.separator}git${file.separator}beige-blc${file.separator}src${file.separator}main${file.separator}resources</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
