@@ -184,9 +184,6 @@
       <resource>
         <directory>${user.home}${file.separator}git${file.separator}beige-blc${file.separator}src${file.separator}test${file.separator}resources</directory>
       </resource>
-      <resource>
-        <directory>${user.home}${file.separator}git${file.separator}beige-blc${file.separator}src${file.separator}main${file.separator}resources</directory>
-      </resource>
     </resources>
     <plugins>
       <plugin>
