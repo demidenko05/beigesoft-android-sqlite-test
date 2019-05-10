@@ -36,6 +36,7 @@ import android.content.Context;
 import android.database.Cursor;
 
 import org.beigesoft.exc.ExcCode;
+import org.beigesoft.hld.IAttrs;
 import org.beigesoft.loga.Loga;
 import org.beigesoft.andr.Rdb;
 import org.beigesoft.andr.FctRdb;
@@ -47,7 +48,6 @@ import org.beigesoft.andr.FctRdb;
  */
 public class FctTstAndr implements IFctAsm<Cursor> {
 
-
   /**
    * <p>Main only factory.</p>
    **/
@@ -55,10 +55,9 @@ public class FctTstAndr implements IFctAsm<Cursor> {
 
   /**
    * <p>Only constructor.</p>
-   * @param pCntx Android context
    * @throws Exception - an exception
    */
-  public FctTstAndr(final Context pCntx) throws Exception {
+  public FctTstAndr() throws Exception {
     this.fctBlc = new FctBlc<Cursor>();
     Loga log = new Loga();
     log.setDbgFl(0);
@@ -69,9 +68,6 @@ public class FctTstAndr implements IFctAsm<Cursor> {
     this.fctBlc.setIsAndr(true);
     this.fctBlc.setDbUrl("tstdb");
     this.fctBlc.setStgOrmDir("sqlite");
-    FctRdb frdb = new FctRdb();
-    frdb.setCntx(pCntx);
-    this.fctBlc.getFctsAux().add(frdb);
   }
 
   /**
@@ -97,7 +93,6 @@ public class FctTstAndr implements IFctAsm<Cursor> {
     this.fctBlc.release(pRqVs);
   }
 
-
   /**
    * <p>Puts beans by external AUX factory.</p>
    * @param pRqVs request scoped vars
@@ -118,5 +113,20 @@ public class FctTstAndr implements IFctAsm<Cursor> {
   @Override
   public final FctBlc<Cursor> getFctBlc() {
     return this.fctBlc;
+  }
+
+  /**
+   * <p>Initializes factory.</p>
+   * @param pRvs request scoped vars
+   * @param pCtxAttrs context attributes
+   * @throws Exception - an exception, e.g. if bean exists
+   */
+  @Override
+  public final void init(final Map<String, Object> pRvs,
+    final IAttrs pCtxAttrs) throws Exception {
+    FctRdb frdb = new FctRdb();
+    Context cntx = (Context) pCtxAttrs.getAttr("AndrCtx");
+    frdb.setCntx(cntx);
+    this.fctBlc.getFctsAux().add(frdb);
   }
 }

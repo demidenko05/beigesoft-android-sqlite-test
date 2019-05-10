@@ -29,7 +29,8 @@ public class DatabaseTests extends android.test.AndroidTestCase {
    **/
   public void testAll() throws Exception {
     Map<String, Object> rvs = new HashMap<String, Object>();
-    FctTstAndr fctApp = new FctTstAndr(getContext());
+    FctTstAndr fctApp = new FctTstAndr();
+    fctApp.init(rvs, new CtxAttr(getContext()));
     Tst1 tst1 = new Tst1();
     tst1.setFctApp(fctApp);
     tst1.tst1();
