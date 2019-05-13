@@ -47,7 +47,7 @@ import static org.junit.Assert.assertArrayEquals;
 
 import org.beigesoft.loga.Loga;
 import org.beigesoft.crypto.CryptoTest;
-import org.beigesoft.ajetty.crypto.CryptoServiceSc;
+import org.beigesoft.ajetty.crypto.CryptoService;
 
 /**
  * <p>Crypto tests for Android inner crypto-providers.
@@ -61,7 +61,7 @@ public class CryptoTests extends android.test.AndroidTestCase {
     CryptoTest crt = new CryptoTest();
     Loga log = new Loga();
     crt.setLog(log);
-    crt.setCryptoService(new CryptoServiceSc());
+    crt.setCryptoService(new CryptoService());
     ContextWrapper cw = new ContextWrapper(getContext());
     AssetManager assetManager = getContext().getAssets();
     InputStream ins = null;

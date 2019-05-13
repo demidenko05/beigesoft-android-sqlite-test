@@ -71,4 +71,12 @@ public class CtxAttr implements IAttrs {
   public final void setAttr(final String pAttrName,
     final Object pAttribute) {
   }
+
+  /**
+   * <p>Removes attribute.</p>
+   * @param pAttrName Attribute name
+   **/
+  @Override
+  public final void remAttr(final String pAttrName) {
+  }
 }
