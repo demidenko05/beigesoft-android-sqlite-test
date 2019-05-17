@@ -63,11 +63,11 @@ public class FctTstAndrMdb implements IFctAsm<Cursor> {
     log.setDbgFl(0);
     log.setDbgCl(100000);
     log.setDbgSh(true);
-    this.fctBlc.setLngCntr("en,US,ru,RU");
+    this.fctBlc.getFctDt().setLngCntr("en,US,ru,RU");
     this.fctBlc.setLogStd(log);
-    this.fctBlc.setIsAndr(true);
-    this.fctBlc.setDbUrl("tstdb");
-    this.fctBlc.setStgOrmDir("sqlite");
+    this.fctBlc.getFctDt().setIsAndr(true);
+    this.fctBlc.getFctDt().setDbUrl("tstdb");
+    this.fctBlc.getFctDt().setStgOrmDir("sqlite");
   }
 
   /**
