@@ -21,8 +21,69 @@
   <dependencies>
     <dependency>
       <groupId>org.beigesoft</groupId>
-      <artifactId>beige-andr</artifactId>
+      <artifactId>beige-accandr</artifactId>
       <version>1.0-SNAPSHOT</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.beigesoft</groupId>
+          <artifactId>beige-accjet</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.github.demidenko05</groupId>
+          <artifactId>a-apache-jsp</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.github.demidenko05</groupId>
+          <artifactId>taglibs-standard-spec</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.github.demidenko05</groupId>
+          <artifactId>taglibs-standard-impl</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.github.demidenko05</groupId>
+          <artifactId>a-javabeans8</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>javax.servlet</groupId>
+          <artifactId>javax.servlet-api</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.android.support</groupId>
+          <artifactId>multidex</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.sun.mail</groupId>
+          <artifactId>android-mail</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.sun.mail</groupId>
+          <artifactId>android-activation</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.beigesoft</groupId>
+      <artifactId>beige-blc</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <type>test-jar</type>
+      <exclusions>
+        <exclusion>
+          <groupId>com.zaxxer</groupId>
+          <artifactId>HikariCP</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.beigesoft</groupId>
+      <artifactId>beige-blc</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.zaxxer</groupId>
+          <artifactId>HikariCP</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
      <groupId>org.beigesoft</groupId>
@@ -35,83 +96,6 @@
      <version>1.0.0</version>
     </dependency>
     <dependency>
-      <groupId>org.beigesoft</groupId>
-      <artifactId>beige-blc</artifactId>
-      <version>1.0-SNAPSHOT</version>
-      <type>test-jar</type>
-    </dependency>
-    <dependency>
-      <groupId>com.github.demidenko05</groupId>
-      <artifactId>a-jetty-base</artifactId>
-      <version>1.0.5-SNAPSHOT</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.bouncycastle</groupId>
-          <artifactId>bcprov-jdk15on</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.bouncycastle</groupId>
-          <artifactId>bcpkix-jdk15on</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.github.demidenko05</groupId>
-          <artifactId>a-apache-jsp</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.github.demidenko05</groupId>
-          <artifactId>taglibs-standard-spec</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.github.demidenko05</groupId>
-          <artifactId>taglibs-standard-impl</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.github.demidenko05</groupId>
-          <artifactId>a-javabeans8</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>javax.servlet</groupId>
-          <artifactId>javax.servlet-api</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>com.github.demidenko05</groupId>
-      <artifactId>a-jetty-base</artifactId>
-      <version>1.0.5-SNAPSHOT</version>
-      <type>test-jar</type>
-      <exclusions>
-        <exclusion>
-          <groupId>org.bouncycastle</groupId>
-          <artifactId>bcprov-jdk15on</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.bouncycastle</groupId>
-          <artifactId>bcpkix-jdk15on</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.github.demidenko05</groupId>
-          <artifactId>a-apache-jsp</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.github.demidenko05</groupId>
-          <artifactId>taglibs-standard-spec</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.github.demidenko05</groupId>
-          <artifactId>taglibs-standard-impl</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.github.demidenko05</groupId>
-          <artifactId>a-javabeans8</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>javax.servlet</groupId>
-          <artifactId>javax.servlet-api</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcprov-jdk15on</artifactId>
       <version>1.61</version>
@@ -120,6 +104,34 @@
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcpkix-jdk15on</artifactId>
       <version>1.61</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.demidenko05</groupId>
+      <artifactId>a-jetty-base</artifactId>
+      <version>1.0.5-SNAPSHOT</version>
+      <type>test-jar</type>
+      <exclusions>
+        <exclusion>
+          <groupId>com.github.demidenko05</groupId>
+          <artifactId>a-apache-jsp</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.github.demidenko05</groupId>
+          <artifactId>taglibs-standard-spec</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.github.demidenko05</groupId>
+          <artifactId>taglibs-standard-impl</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.github.demidenko05</groupId>
+          <artifactId>a-javabeans8</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>javax.servlet</groupId>
+          <artifactId>javax.servlet-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>com.google.android</groupId>
@@ -142,15 +154,23 @@
 
   <build>
     <finalName>${project.artifactId}</finalName>
-    <resources>
+    <!--<resources>
+      Duplicates problem. maven-shade-plugin is useless. Dependences order does matter for "the first file occurrence", but not always - cmnst.xml is wrong?!
+      This project's files must be at the target APK, but it is not! Files from JAR dependences sometimes have high priority!?
+      Coping (either into final project or these resources entries) - cmnst.xml is still wrong (from blc-test.jar), not from current project or beige-accandr!?
       <resource>
-        <directory>src${file.separator}main${file.separator}resources</directory>
+        <directory>..${file.separator}beige-accandr${file.separator}src${file.separator}main${file.separator}resources</directory>
       </resource>
       <resource>
-        <directory>${user.home}${file.separator}git${file.separator}beige-blc${file.separator}src${file.separator}test${file.separator}resources</directory>
+        <directory>..${file.separator}beige-blc${file.separator}src${file.separator}test${file.separator}resources</directory>
       </resource>
-    </resources>
+    </resources>-->
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.7</version>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-install-plugin</artifactId>
@@ -164,8 +184,18 @@
       <plugin>
         <groupId>com.simpligility.maven.plugins</groupId>
         <artifactId>android-maven-plugin</artifactId>
-        <version>4.5.0</version>
+        <version>4.6.0</version>
         <configuration>
+          <!--<artifactSet>
+            <includes>
+              <include>
+                org.beigesoft:beige-accandr:1.0-SNAPSHOT
+              </include>
+              <include>
+                org.beigesoft:beige-blc:1.0-SNAPSHOT
+              </include>
+            </includes>
+          </artifactSet>-->
           <test>
             <skip>false</skip>
           </test>
@@ -176,11 +206,6 @@
           <extractDuplicates>true</extractDuplicates>
         </configuration>
         <extensions>true</extensions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>2.7</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
