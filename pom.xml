@@ -184,7 +184,7 @@
       <plugin>
         <groupId>com.simpligility.maven.plugins</groupId>
         <artifactId>android-maven-plugin</artifactId>
-        <version>4.6.0</version>
+        <version>4.5.0</version>
         <configuration>
           <!--<artifactSet>
             <includes>
@@ -200,7 +200,7 @@
             <skip>false</skip>
           </test>
           <sdk>
-            <platform>28</platform>
+            <platform>29</platform>
           </sdk>
           <undeployBeforeDeploy>true</undeployBeforeDeploy>
           <extractDuplicates>true</extractDuplicates>
