@@ -22,7 +22,7 @@
     <dependency>
       <groupId>org.beigesoft</groupId>
       <artifactId>beige-accandr</artifactId>
-      <version>1.0</version>
+      <version>1.1-SNAPSHOT</version>
       <exclusions>
         <exclusion>
           <groupId>org.beigesoft</groupId>
@@ -152,7 +152,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <version>4.13</version>
     </dependency>
   </dependencies>
 
@@ -173,7 +173,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>2.7</version>
+        <version>3.2.0</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -188,7 +188,7 @@
       <plugin>
         <groupId>com.simpligility.maven.plugins</groupId>
         <artifactId>android-maven-plugin</artifactId>
-        <version>4.5.0</version>
+        <version>4.6.0</version>
         <configuration>
           <!--<artifactSet>
             <includes>
@@ -204,7 +204,7 @@
             <skip>false</skip>
           </test>
           <sdk>
-            <platform>29</platform>
+            <platform>30</platform>
           </sdk>
           <undeployBeforeDeploy>true</undeployBeforeDeploy>
           <extractDuplicates>true</extractDuplicates>
@@ -214,7 +214,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.22.1</version>
+        <version>3.0.0-M5</version>
         <configuration>
           <useSystemClassLoader>false</useSystemClassLoader>
           <useFile>false</useFile>
@@ -224,7 +224,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
+        <version>3.8.1</version>
         <configuration>
           <source>${java.version}</source>
           <target>${java.version}</target>
@@ -237,7 +237,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.4</version>
+        <version>3.3.0</version>
         <inherited>false</inherited>
         <configuration>
           <runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
