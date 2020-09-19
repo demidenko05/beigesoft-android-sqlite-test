@@ -69,7 +69,7 @@
     <dependency>
       <groupId>org.beigesoft</groupId>
       <artifactId>beige-blc</artifactId>
-      <version>1.0</version>
+      <version>1.1-SNAPSHOT</version>
       <type>test-jar</type>
       <exclusions>
         <exclusion>
@@ -81,7 +81,7 @@
     <dependency>
       <groupId>org.beigesoft</groupId>
       <artifactId>beige-blc</artifactId>
-      <version>1.0</version>
+      <version>1.1-SNAPSHOT</version>
       <exclusions>
         <exclusion>
           <groupId>com.zaxxer</groupId>
@@ -99,15 +99,16 @@
      <artifactId>beige-graphic-android</artifactId>
      <version>1.0.0</version>
     </dependency>
+    <!-- proguard ok: exclude files such 1.66 META-INF/versions/11/org/bouncycastle/jcajce/provider/asymmetric/edec/BC11XDHPrivateKey.class -->
     <dependency>
       <groupId>org.bouncycastle</groupId>
-      <artifactId>bcprov-jdk15on</artifactId>
-      <version>1.61</version>
+      <artifactId>bcprov-jdk15on</artifactId> 
+      <version>1.66</version>
     </dependency>
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcpkix-jdk15on</artifactId>
-      <version>1.61</version>
+      <version>1.66</version>
     </dependency>
     <dependency>
       <groupId>com.github.demidenko05</groupId>
@@ -158,17 +159,25 @@
 
   <build>
     <finalName>${project.artifactId}</finalName>
-    <!--<resources>
+    <!--
+      Because progurad manually file and skipDependencies=true!!!
+    -->
+    <resources>
+      <resource>
+        <directory>src${file.separator}main${file.separator}resources</directory>
+      </resource>
+      <!--
+      ...outdated:
       Duplicates problem. maven-shade-plugin is useless. Dependences order does matter for "the first file occurrence", but not always - cmnst.xml is wrong?!
       This project's files must be at the target APK, but it is not! Files from JAR dependences sometimes have high priority!?
       Coping (either into final project or these resources entries) - cmnst.xml is still wrong (from blc-test.jar), not from current project or beige-accandr!?
       <resource>
-        <directory>..${file.separator}beige-accandr${file.separator}src${file.separator}main${file.separator}resources</directory>
+        <directory>..${file.separator}beige-accandr${file.separator}src${file.separator}main${file.separator}resources/sqlite</directory>
       </resource>
       <resource>
-        <directory>..${file.separator}beige-blc${file.separator}src${file.separator}test${file.separator}resources</directory>
-      </resource>
-    </resources>-->
+        <directory>..${file.separator}beige-blc${file.separator}src${file.separator}test${file.separator}resources/sqlite</directory>
+      </resource>-->
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -189,17 +198,27 @@
         <groupId>com.simpligility.maven.plugins</groupId>
         <artifactId>android-maven-plugin</artifactId>
         <version>4.6.0</version>
+        <extensions>true</extensions>
         <configuration>
           <!--<artifactSet>
-            <includes>
-              <include>
-                org.beigesoft:beige-accandr:1.0-SNAPSHOT
-              </include>
-              <include>
-                org.beigesoft:beige-blc:1.0-SNAPSHOT
-              </include>
-            </includes>
+            <excludes>
+              <exclude>org.bouncycastle:*</exclude>doesn't work
+            </excludes>
           </artifactSet>-->
+          <includeLibsJarsFromAar>false</includeLibsJarsFromAar>
+          <attachJar>false</attachJar>
+          <includeJdkLibs>false</includeJdkLibs>
+          <skipDependencies>true</skipDependencies><!--it works for proguard but there is no resources-->
+          <proguard>
+            <!--All Crypto, PDF, RDBMA work!-->
+            <skip>false</skip>
+            <config>proguard.cfg</config>
+            <!--<configs>
+              <config>${env.ANDROID_HOME}/tools/proguard/proguard-android-optimize.txt</config>
+            </configs>
+            <customFilter>dbcp/**,postgres/**,uvd/**,fonts/**,mysql/**,META-INF/versions/**,javax/servlet/**,org/eclipse/jetty/**,org/beigesoft/jdbc/**</customFilter> - this is for all injars!!!
+            <customFilter>dbcp/**,postgres/**,uvd/**,mysql/**,META-INF/versions/**,org/beigesoft/jdbc/**</customFilter>-->
+          </proguard>
           <test>
             <skip>false</skip>
           </test>
@@ -209,7 +228,6 @@
           <undeployBeforeDeploy>true</undeployBeforeDeploy>
           <extractDuplicates>true</extractDuplicates>
         </configuration>
-        <extensions>true</extensions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
