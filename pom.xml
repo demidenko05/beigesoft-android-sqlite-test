@@ -99,16 +99,16 @@
      <artifactId>beige-graphic-android</artifactId>
      <version>1.0.0</version>
     </dependency>
-    <!-- proguard ok: exclude files such 1.66 META-INF/versions/11/org/bouncycastle/jcajce/provider/asymmetric/edec/BC11XDHPrivateKey.class -->
+    <!-- proguard ok: exclude files such 1.67 META-INF/versions/11/org/bouncycastle/jcajce/provider/asymmetric/edec/BC11XDHPrivateKey.class -->
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcprov-jdk15on</artifactId> 
-      <version>1.66</version>
+      <version>1.67</version>
     </dependency>
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcpkix-jdk15on</artifactId>
-      <version>1.66</version>
+      <version>1.67</version>
     </dependency>
     <dependency>
       <groupId>com.github.demidenko05</groupId>
